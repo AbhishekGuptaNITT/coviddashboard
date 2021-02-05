@@ -129,7 +129,7 @@ const Home = (props) => {
                     <small className="text-muted">data is updated every 5 minutes</small>
                     </Card.Footer>
                 </Card>
-                <Card bg='light' text='dark'>
+                <Card bg='dark' text='light'>
                     <Card.Header>
                         Write Something to developer
                     </Card.Header>
