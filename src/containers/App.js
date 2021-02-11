@@ -5,6 +5,7 @@ class App extends Component{
   render(){
     return(
       <BrowserRouter>
+        {alert('Unnfortunately this webapp is no longer maintained!')}
         <Layout>
         </Layout>
       </BrowserRouter>
