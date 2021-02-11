@@ -70,6 +70,8 @@ class layout extends Component{
                         </Alert>
                     </Route>
                 </Switch>
+                
+
             </div>
         )
     }
