@@ -8,8 +8,8 @@ const Aboutus = (props) => {
             <p className='h4 text-success'>
                 <i>Created with care</i>
                 <br>
-                    <b>Contact <a href='https://www.linkedin.com/in/abhishek-gupta-6a1544191/' target='__blank'>Developer Linkedin</a> </b>
                 </br>
+                <b>Contact <a href='https://www.linkedin.com/in/abhishek-gupta-6a1544191/' target='__blank'>Developer Linkedin</a> </b>
             </p>
         </Jumbotron>
         
