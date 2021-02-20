@@ -6,7 +6,10 @@ const Aboutus = (props) => {
         <Jumbotron style={{margin:'50px 25px',background:'black',color:'skyblue'}}>
             <h1 className='display-4'>Covid dashboard</h1>
             <p className='h4 text-success'>
-                <u><i>Created with care by an NIT-Trichyian XD</i></u>
+                <i>Created with care</i>
+                <br>
+                    <b>Contact <a href='https://www.linkedin.com/in/abhishek-gupta-6a1544191/' target='__blank'>Developer Linkedin</a> </b>
+                </br>
             </p>
         </Jumbotron>
         
