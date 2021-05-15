@@ -5,6 +5,7 @@ import Header from '../../components/header/header'
 import Home from '../../components/home/home'
 import axios from '../../components/axiosIns'
 import Aboutus from '../aboutus'
+import VaccineTracker from '../vaccineTracker/vaccineTracker'
 class layout extends Component{
     state = {
         latestTotal:null,
@@ -41,7 +42,7 @@ class layout extends Component{
         ).catch((error) => console.log(error))
     }
     render(){
-        console.log(this.state);
+        // console.log(this.state);
         return(
             <div>
                 <Header />
@@ -58,6 +59,9 @@ class layout extends Component{
                     </Route>
                     <Route path='/about-us' exact>
                         <Aboutus />
+                    </Route>
+                    <Route path='/vaccine-tracker/' exact>
+                        <VaccineTracker />
                     </Route>
                     <Route>
                         <Alert variant='warning'>
