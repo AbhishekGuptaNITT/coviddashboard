@@ -16,6 +16,7 @@ const Example = (props) => {
                         {val.date}
                     </td>
                     <td>{val.available_capacity}</td>
+                    <td>{val.vaccine}</td>
                     <td>{val.min_age_limit}</td>
                 </tr>
             )
@@ -28,6 +29,7 @@ const Example = (props) => {
                     <td>Session</td>
                     <td>Date</td>
                     <td>Availablity</td>
+                    <td>Vaccine</td>
                     <td>Age limit</td>
                 </tr>
             </thead>
