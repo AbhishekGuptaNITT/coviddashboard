@@ -23,7 +23,7 @@ const Example = (props) => {
         })
     )
     let table = (
-        <Table>
+        <Table striped bordered hover variant="success" responsive>
             <thead>
                 <tr>
                     <td>Session</td>
