@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import { Jumbotron,Row,Card,Spinner,Form,Button } from 'react-bootstrap'
 import axiosIns from './axiosVaccineTracker'
+import Slots from '../../components/slots'
 
 import {Route} from 'react-router-dom'
 class VaccineTracker extends Component{
@@ -28,6 +29,7 @@ class VaccineTracker extends Component{
         state_id:null,
         district_id:null,
         date:null,
+        disp:0,
     }
     updateDistrict = () => {
         let x = document.getElementById('districtman').value;
@@ -93,6 +95,11 @@ class VaccineTracker extends Component{
     render(){
         let myvar="primary"
         let msg = "Fill above Details to find slots"
+        if(this.state.district_id && this.state.state_id && this.state.date && !this.state.disp){
+            msg="Filled!"
+            myvar="success"
+            this.setState({disp:1})
+        }
         if(this.state.district_id && this.state.state_id && this.state.date){
             msg="Filled!"
             myvar="success"
@@ -101,7 +108,7 @@ class VaccineTracker extends Component{
         if(this.state.districts){
             this.districtoptions = this.state.districts.map((val,ind) => <option key={val.district_id}>{val.district_name}</option>)
         }
-        if(this.state.states){
+        if(this.state.states){  
             this.stateoptions = this.state.states.map((val,ind) => <option key={val.state_id}>{val.state_name}</option>)
             this.locform =  (
                 <Form>
@@ -152,6 +159,7 @@ class VaccineTracker extends Component{
                     </Card.Footer>
                     </Card>
                 </Jumbotron>
+                {this.state.disp ? <Slots id={this.state.district_id} date={this.state.date} /> : null}
         </React.Fragment>
         )
     }
