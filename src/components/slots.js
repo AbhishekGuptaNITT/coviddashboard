@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import axios from 'axios'
-import { Table } from 'react-bootstrap';
+import { Table,Button } from 'react-bootstrap';
+import Modal from './modal'
 
 const slots = (props) => {
     console.log(props);
@@ -9,6 +10,9 @@ const slots = (props) => {
             <tr>
                 <td>{val.name}</td>
                 <td>{val.address}</td>
+                <td>
+                    <Modal heading={val.name} content={val.sessions} />
+                </td>
             </tr>
         )
     })
@@ -21,9 +25,7 @@ const slots = (props) => {
                             <tr>
                                 <th>Center Name</th>
                                 <th>Address</th>
-                                <th>Date</th>
-                                <th>Min Age</th>
-                                <th>Vaccine</th>
+                                <th>Select Center</th>
                             </tr>
                         </thead>
                         <tbody>
