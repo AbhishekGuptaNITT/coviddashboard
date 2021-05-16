@@ -169,7 +169,7 @@ class VaccineTracker extends Component{
         return(
         <React.Fragment>
                 <Jumbotron style={{margin:'25px'}}>
-                    <div className='h1' style={{textAlign:'center'}}>Vaccine Tracker</div>
+                    <div className='h1' style={{textAlign:'center'}}>Vaccine Tracker <kbd>beta</kbd></div>
                     <Card>
                     <Card.Header>Data is updated after every 30 mins from govt servers</Card.Header>
                     <Card.Body>
