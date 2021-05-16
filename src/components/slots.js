@@ -9,9 +9,6 @@ const slots = (props) => {
             <tr>
                 <td>{val.name}</td>
                 <td>{val.address}</td>
-                <td>{val.sessions[0].date}</td>
-                <td>{val.sessions[0].min_age_limit}</td>
-                <td>{val.sessions[0].vaccine}</td>
             </tr>
         )
     })
@@ -19,7 +16,7 @@ const slots = (props) => {
         <div className='container-fluid'>
             <div className='row'>
                 <div className='col'>
-                    <Table striped bordered hover variant="light" responsive>
+                    <Table striped bordered hover variant="light" responsive id='tab'>
                         <thead>
                             <tr>
                                 <th>Center Name</th>

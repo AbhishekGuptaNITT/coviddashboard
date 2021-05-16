@@ -27,6 +27,8 @@ class VaccineTracker extends Component{
             this.setState({
                 centers:response.data.centers
             })
+            var elmnt = document.getElementById("tab");
+            elmnt.scrollIntoView();
         }).catch((error) => console.log(error))
     }
     componentDidMount(){
@@ -125,7 +127,7 @@ class VaccineTracker extends Component{
             this.setState({disp:1})
         }
         if(this.state.district_id && this.state.state_id && this.state.date){
-            msg="Filled! click me to search slots"
+            msg="Filled! click me to search slots and look below"
             myvar="success"
         }
         console.log(this.state);
