@@ -26,6 +26,28 @@ class VaccineTracker extends Component{
         states:null,
         districts:null,
         state_id:null,
+        district_id:null,
+        date:null,
+    }
+    updateDistrict = () => {
+        let x = document.getElementById('districtman').value;
+        let i = 0,district_id=0;
+        for(i=0;i<this.state.districts.length;i++){
+            if(x==this.state.districts[i].district_name)
+            {
+                console.log(this.state.districts[i]);
+                district_id=this.state.districts[i].district_id;
+                break;
+            }
+        }
+        this.setState({
+            district_id:district_id
+        })
+    }
+    updateDate = () => {
+        this.setState({
+            date:document.getElementById('date').value
+        })
     }
     fetchdistricts = () => {
         var statename = document.getElementById('stateman').value
@@ -40,8 +62,9 @@ class VaccineTracker extends Component{
 
         axiosIns.get(path).then(
             (response) => {
-                console.log(response)
+                // console.log(response)
                 this.setState({
+                    state_id:state_id,
                     districts:response.data.districts
                 })
             }
@@ -51,14 +74,30 @@ class VaccineTracker extends Component{
     }
     stateoptions = null
     districtoptions = null
-    
+
     locform = (
         <Spinner animation="border" role="status" style={{width:'100',margin:'auto',display:'block'}}>
             <span className="sr-only">Loading...</span>
         </Spinner>
     )
-
+    getSlots = () => {
+        axiosIns.get('/v2/appointment/sessions/public/calendarByDistrict',{
+            params:{
+                district_id:this.state.district_id,
+                date:this.state.date,
+            }
+        }).then((response) => {
+            console.log(response)
+        }).catch((error) => console.log(error))
+    }
     render(){
+        let myvar="primary"
+        let msg = "Fill above Details to find slots"
+        if(this.state.district_id && this.state.state_id && this.state.date){
+            msg="Filled!"
+            myvar="success"
+        }
+        console.log(this.state);
         if(this.state.districts){
             this.districtoptions = this.state.districts.map((val,ind) => <option key={val.district_id}>{val.district_name}</option>)
         }
@@ -70,22 +109,30 @@ class VaccineTracker extends Component{
                     <Form.Label>Select State</Form.Label>
                     <Form.Control as="select" id='fetchme' onChange={this.fetchdistricts} id='stateman'>
                         {this.stateoptions}
+                        <option disabled selected value> -- select an option -- </option>
                     </Form.Control>
                     </Form.Group>
                     
                     <Form.Group controlId="select">
                     <Form.Label>Select District</Form.Label>
-                    <Form.Control as="select" id='fetchme2' id='districtman'>
+                    <Form.Control as="select" id='districtman' onChange={this.updateDistrict}>
                         {this.districtoptions}
+                        <option disabled selected value> -- select an option -- </option>
                     </Form.Control>
                     </Form.Group>
-                    <Button variant="primary" type="button" onClick={this.clicked}>
-                        Fetch
+
+                    <Form.Group controlId="select">
+                    <Form.Label>Date</Form.Label><br></br>
+                        <input type='date' name='date' id='date' onChange={this.updateDate}></input>
+                    </Form.Group>
+                    <Button variant={myvar} type="button" onClick={this.getSlots}>
+                        {msg}
                     </Button>
                 </Form>
             )
         }
-        console.log(this.state);
+        
+        // console.log(this.state);
         return(
         <React.Fragment>
                 <Jumbotron style={{margin:'25px'}}>
