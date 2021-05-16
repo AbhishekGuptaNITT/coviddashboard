@@ -1,11 +1,34 @@
 import React,{Component} from 'react'
 import { Jumbotron,Row,Card,Spinner,Form,Button } from 'react-bootstrap'
 import axiosIns from './axiosVaccineTracker'
+import axios from 'axios'
 import Slots from '../../components/slots'
 
 import {Route} from 'react-router-dom'
 class VaccineTracker extends Component{
+    
+   convertDate = (inputFormat) => {
+    function pad(s) { return (s < 10) ? '0' + s : s; }
+    var d = new Date(inputFormat)
+    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')
+    }
 
+    fetchSlots = () => {
+        let id = this.state.district_id,date = this.state.date
+        date = this.convertDate(date).toString()
+        let g = id.toString()
+        if(g.length<3)
+            g = '0'+g
+        id=g;
+        console.log(date);
+        let url = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+id+'&date='+date
+    
+        axios.get(url).then((response) => {
+            this.setState({
+                centers:response.data.centers
+            })
+        }).catch((error) => console.log(error))
+    }
     componentDidMount(){
         console.log('mounted')
         if(!this.state.states)
@@ -30,6 +53,7 @@ class VaccineTracker extends Component{
         district_id:null,
         date:null,
         disp:0,
+        centers:null,
     }
     updateDistrict = () => {
         let x = document.getElementById('districtman').value;
@@ -101,7 +125,7 @@ class VaccineTracker extends Component{
             this.setState({disp:1})
         }
         if(this.state.district_id && this.state.state_id && this.state.date){
-            msg="Filled!"
+            msg="Filled! click me to search slots"
             myvar="success"
         }
         console.log(this.state);
@@ -132,7 +156,7 @@ class VaccineTracker extends Component{
                     <Form.Label>Date</Form.Label><br></br>
                         <input type='date' name='date' id='date' onChange={this.updateDate}></input>
                     </Form.Group>
-                    <Button variant={myvar} type="button" onClick={this.getSlots}>
+                    <Button variant={myvar} type="button" onClick={this.fetchSlots}>
                         {msg}
                     </Button>
                 </Form>
@@ -159,7 +183,7 @@ class VaccineTracker extends Component{
                     </Card.Footer>
                     </Card>
                 </Jumbotron>
-                {this.state.disp ? <Slots id={this.state.district_id} date={this.state.date} /> : null}
+                {this.state.centers ? <Slots centers={this.state.centers}/> : null}
         </React.Fragment>
         )
     }

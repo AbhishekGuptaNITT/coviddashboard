@@ -1,32 +1,38 @@
 import React,{Component} from 'react'
 import axios from 'axios'
+import { Table } from 'react-bootstrap';
 
-function convertDate(inputFormat) {
-    function pad(s) { return (s < 10) ? '0' + s : s; }
-    var d = new Date(inputFormat)
-    return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')
-  }
-const fetchSlots = (id,date) => {
-    date = convertDate(date).toString()
-    let g = id.toString()
-    if(g.length<3)
-        g = '0'+g
-    id=g;
-    console.log(date);
-    let url = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+id+'&date='+date
-
-    axios.get(url).then((response) => {
-        console.log(response)
-    }).catch((error) => console.log(error))
-}
 const slots = (props) => {
     console.log(props);
-    let slots = fetchSlots(props.id,props.date)
+    let centers = props.centers.map((val,ind) => {
+        return(
+            <tr>
+                <td>{val.name}</td>
+                <td>{val.address}</td>
+                <td>{val.sessions[0].date}</td>
+                <td>{val.sessions[0].min_age_limit}</td>
+                <td>{val.sessions[0].vaccine}</td>
+            </tr>
+        )
+    })
     return (
-        <div className='container'>
+        <div className='container-fluid'>
             <div className='row'>
                 <div className='col'>
-                    <h1 className='text-center bg-dark text-light'>Slots Available</h1>
+                    <Table striped bordered hover variant="light" responsive>
+                        <thead>
+                            <tr>
+                                <th>Center Name</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Min Age</th>
+                                <th>Vaccine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {centers}
+                        </tbody>
+                    </Table>
                 </div>
             </div>
         </div>
