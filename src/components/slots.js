@@ -7,9 +7,13 @@ const slots = (props) => {
     console.log(props);
     let centers = props.centers.map((val,ind) => {
         let amt = 0;
-        amt = amt + parseInt(val.sessions.map((val,ind) => {
-            return parseInt(val.available_capacity_dose1)+parseInt(val.available_capacity_dose2)
-        }))
+        amt = val.sessions.map((val2,ind) => {
+            return parseInt(val2.available_capacity_dose1)+parseInt(val2.available_capacity_dose2)
+        })
+        let p  = 0;
+        for(let i=0;i<amt.length;i++)
+            p = p+parseInt(amt[i]);
+        amt = p;
         let status = amt==0 ? 'Booked' : 'Available';
 
         let sts = status + ' ' + amt;
