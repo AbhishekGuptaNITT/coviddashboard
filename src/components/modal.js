@@ -42,8 +42,8 @@ const Example = (props) => {
             <thead>
                 <tr>
                     <td>Date</td>
-                    <td>Slot</td>
-                    <td>Slot</td>
+                    <td>1st Dose</td>
+                    <td>2nd Dose</td>
                     <td>Vaccine</td>
                     <td>Age limit</td>
                 </tr>

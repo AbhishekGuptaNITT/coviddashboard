@@ -6,8 +6,7 @@ import Modal from './modal'
 const slots = (props) => {
     console.log(props);
     let centers = props.centers.map((val,ind) => {
-        let amt = 0;
-        amt = val.sessions.map((val2,ind) => {
+        let amt = val.sessions.map((val2,ind) => {
             return parseInt(val2.available_capacity_dose1)+parseInt(val2.available_capacity_dose2)
         })
         let p  = 0;
@@ -36,10 +35,10 @@ const slots = (props) => {
                     <Table striped bordered hover variant="light" responsive id='tab'>
                         <thead>
                             <tr>
-                                <td>Status</td>
+                                <th>Status</th>
                                 <th>Center Name</th>
                                 <th>Address</th>
-                                <th>Select Center</th>
+                                <th>Select</th>
                             </tr>
                         </thead>
                         <tbody>
