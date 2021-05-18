@@ -185,7 +185,7 @@ class VaccineTracker extends Component{
                     </Card.Footer>
                     </Card>
                 </Jumbotron>
-                {this.state.centers ? <Slots centers={this.state.centers}/> : null}
+                {this.state.centers ? <Slots centers={this.state.centers} fun={this.fetchSlots}/> : null}
         </React.Fragment>
         )
     }

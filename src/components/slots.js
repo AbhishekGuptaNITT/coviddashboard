@@ -11,7 +11,7 @@ const slots = (props) => {
                 <td>{val.name}</td>
                 <td>{val.address}</td>
                 <td>
-                    <Modal heading={val.name} content={val.sessions} />
+                    <Modal heading={val.name} content={val.sessions} fun={props.fun} />
                 </td>
             </tr>
         )

@@ -9,12 +9,10 @@ const Example = (props) => {
     const handleShow = () => setShow(true);
     const body = (
         props.content.map((val,ind) => {
+
             return(
                 <tr>
-                    <td>{ind+1}</td>
-                    <td>
-                        {val.date}
-                    </td>
+                    <td>{val.date}</td>
                     <td>{val.available_capacity}</td>
                     <td>{val.vaccine}</td>
                     <td>{val.min_age_limit}</td>
@@ -23,10 +21,10 @@ const Example = (props) => {
         })
     )
     let table = (
-        <Table striped bordered hover variant="success" responsive>
+      <React.Fragment>
+        <Table striped bordered hover variant="dark" responsive>
             <thead>
                 <tr>
-                    <td>Session</td>
                     <td>Date</td>
                     <td>Availablity</td>
                     <td>Vaccine</td>
@@ -37,6 +35,8 @@ const Example = (props) => {
                 {body}
             </tbody>
         </Table>
+        <Button variant='primary' onClick={props.fun}>Refresh</Button>
+      </React.Fragment>
     )
     return (
       <>
