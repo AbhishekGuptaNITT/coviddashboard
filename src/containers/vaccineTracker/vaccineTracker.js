@@ -27,9 +27,13 @@ class VaccineTracker extends Component{
             this.setState({
                 centers:response.data.centers
             })
+            alert('refreshesh successfull')
             var elmnt = document.getElementById("tab");
             elmnt.scrollIntoView();
-        }).catch((error) => console.log(error))
+        }).catch((error) => {
+            console.log(error)
+            alert('refresh failure')
+        })
     }
     componentDidMount(){
         console.log('mounted')
