@@ -9,11 +9,11 @@ const Example = (props) => {
     const handleShow = () => setShow(true);
     const body = (
         props.content.map((val,ind) => {
-
             return(
                 <tr>
                     <td>{val.date}</td>
-                    <td>{val.available_capacity}</td>
+                    <td>{val.available_capacity_dose1}</td>
+                    <td>{val.available_capacity_dose2}</td>
                     <td>{val.vaccine}</td>
                     <td>{val.min_age_limit}</td>
                 </tr>
@@ -26,7 +26,8 @@ const Example = (props) => {
             <thead>
                 <tr>
                     <td>Date</td>
-                    <td>Availablity</td>
+                    <td>Slot</td>
+                    <td>Slot</td>
                     <td>Vaccine</td>
                     <td>Age limit</td>
                 </tr>
