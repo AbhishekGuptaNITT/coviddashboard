@@ -26,10 +26,10 @@ class VaccineTracker extends Component{
         axios.get(url).then((response) => {
             this.setState({
                 centers:response.data.centers
-            })
-            alert('refreshesh successfull')
+            })           
             var elmnt = document.getElementById("tab");
             elmnt.scrollIntoView();
+            // alert('data fetched')
         }).catch((error) => {
             console.log(error)
             alert('refresh failure')

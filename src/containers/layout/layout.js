@@ -6,6 +6,7 @@ import Home from '../../components/home/home'
 import axios from '../../components/axiosIns'
 import Aboutus from '../aboutus'
 import VaccineTracker from '../vaccineTracker/vaccineTracker'
+import Push from 'push.js'
 class layout extends Component{
     state = {
         latestTotal:null,
@@ -43,6 +44,7 @@ class layout extends Component{
     }
     render(){
         // console.log(this.state);
+        Push.create("Alert facility will be available soon")
         return(
             <div>
                 <Header />
