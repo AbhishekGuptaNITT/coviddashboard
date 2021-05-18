@@ -44,7 +44,16 @@ class layout extends Component{
     }
     render(){
         // console.log(this.state);
-        Push.create("Alert facility will be available soon")
+        Push.create("Hello world!", {
+            body: "How's it hangin'?",
+            icon: '/icon.png',
+            timeout: 4000,
+            vibrate: [400,200],
+            onClick: function () {
+                window.focus();
+                this.close();
+            }
+        });
         return(
             <div>
                 <Header />
