@@ -22,7 +22,7 @@ const Example = (props) => {
     )
     let table = (
       <React.Fragment>
-        <Table striped bordered hover variant="dark" responsive>
+        <Table striped hover variant="light" size='lg' responsive>
             <thead>
                 <tr>
                     <td>Date</td>
@@ -36,7 +36,7 @@ const Example = (props) => {
                 {body}
             </tbody>
         </Table>
-        <Button variant='primary' onClick={props.fun}>Refresh</Button>
+        <a href='https://selfregistration.cowin.gov.in/' target='_blank' className='btn btn-success btn-block'>Book Slot</a>
       </React.Fragment>
     )
     return (
@@ -51,7 +51,8 @@ const Example = (props) => {
           </Modal.Header>
           <Modal.Body>{table}</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+          <Button variant='light' onClick={props.fun} className=''>Refresh</Button>
+            <Button variant="danger" onClick={handleClose}>
               Close
             </Button>
           </Modal.Footer>
