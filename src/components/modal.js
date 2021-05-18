@@ -9,11 +9,27 @@ const Example = (props) => {
     const handleShow = () => setShow(true);
     const body = (
         props.content.map((val,ind) => {
+          let c=null,c2=null;
+          let x = val.available_capacity_dose1
+          if(x==0)
+            c = 'text-danger';
+          else if(x<10)
+            c = 'text-warning';
+          else
+            c = 'text-success';
+          let x2 = val.available_capacity_dose2
+          if(x2==0)
+            c2 = 'text-danger';
+          else if(x2<10)
+            c2 = 'text-warning';
+          else
+            c2 = 'text-success';
+          
             return(
                 <tr>
                     <td>{val.date}</td>
-                    <td>{val.available_capacity_dose1}</td>
-                    <td>{val.available_capacity_dose2}</td>
+                    <td className={c}>{val.available_capacity_dose1}</td>
+                    <td className={c2}>{val.available_capacity_dose2}</td>
                     <td>{val.vaccine}</td>
                     <td>{val.min_age_limit}</td>
                 </tr>
