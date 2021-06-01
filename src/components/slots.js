@@ -7,7 +7,12 @@ const slots = (props) => {
     console.log(props);
     let centers = props.centers.map((val,ind) => {
         let amt = val.sessions.map((val2,ind) => {
-            return parseInt(val2.available_capacity_dose1)+parseInt(val2.available_capacity_dose2)
+            
+            let x = parseInt(val2.available_capacity_dose1)+parseInt(val2.available_capacity_dose2)
+            if(val2.min_age_limit==props.age)
+                return x;
+            else
+                return parseInt(0);
         })
         let p  = 0;
         for(let i=0;i<amt.length;i++)
@@ -23,7 +28,7 @@ const slots = (props) => {
                 <td>{val.name}</td>
                 <td>{val.address}</td>
                 <td>
-                    <Modal heading={val.name} content={val.sessions} fun={props.fun} />
+                    <Modal heading={val.name} age={props.age} dose={props.dose} content={val.sessions} fun={props.fun} />
                 </td>
             </tr>
         )

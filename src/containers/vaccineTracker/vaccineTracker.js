@@ -12,7 +12,6 @@ class VaccineTracker extends Component{
     var d = new Date(inputFormat)
     return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')
     }
-
     fetchSlots = () => {
         let id = this.state.district_id,date = this.state.date
         date = this.convertDate(date).toString()
@@ -123,6 +122,18 @@ class VaccineTracker extends Component{
         }).catch((error) => console.log(error))
     }
     render(){
+        let ageOpt = (['radio'].map((type) => (
+            <div key={`inline-${type}`} className="mb-3">
+              <Form.Check inline label="18+" name="group1" type={type} id='radio1' value='18'/>
+              <Form.Check inline label="45+" name="group1" type={type} id='radio1' value='45'/>
+            </div>
+          )))
+          let doseOpt = (['radio'].map((type) => (
+            <div key={`inline-${type}`} className="mb-3">
+              <Form.Check inline label="dose 1" name="group2" type={type} id='radio2' value='dose1'/>
+              <Form.Check inline label="dose 2" name="group2" type={type} id='radio2' value='dose2'/>
+            </div>
+          )))
         let myvar="primary"
         let msg = "Fill above Details to find slots"
         if(this.state.district_id && this.state.state_id && this.state.date && !this.state.disp){
@@ -158,6 +169,8 @@ class VaccineTracker extends Component{
                     </Form.Control>
                     </Form.Group>
 
+                    {ageOpt}
+                    {/* {doseOpt} */}
                     <Form.Group controlId="select">
                     <Form.Label>Date</Form.Label><br></br>
                         <input type='date' name='date' id='date' onChange={this.updateDate}></input>
@@ -175,7 +188,7 @@ class VaccineTracker extends Component{
                 <Jumbotron style={{margin:'25px'}}>
                     <div className='h1' style={{textAlign:'center'}}>Vaccine Tracker <kbd>beta</kbd></div>
                     <Card>
-                    <Card.Header>Data is updated after every 30 mins from govt servers</Card.Header>
+                    <Card.Header>Data is cached from govt servers</Card.Header>
                     <Card.Body>
                     <Card.Title>
                         
@@ -189,7 +202,7 @@ class VaccineTracker extends Component{
                     </Card.Footer>
                     </Card>
                 </Jumbotron>
-                {this.state.centers ? <Slots centers={this.state.centers} fun={this.fetchSlots}/> : null}
+                {this.state.centers ? <Slots  centers={this.state.centers} fun={this.fetchSlots}/> : null}
         </React.Fragment>
         )
     }

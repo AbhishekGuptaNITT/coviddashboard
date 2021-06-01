@@ -9,6 +9,7 @@ const Example = (props) => {
     const handleShow = () => setShow(true);
     const body = (
         props.content.map((val,ind) => {
+          
           let c=null,c2=null;
           let x = val.available_capacity_dose1
           if(x==0)
