@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import { Col, Navbar, NavbarBrand, Row,Alert } from 'react-bootstrap'
+import { Col, Navbar, NavbarBrand, Row,Alert, Spinner } from 'react-bootstrap'
 import { Route, Switch } from 'react-router-dom'
 import Header from '../../components/header/header'
 import Home from '../../components/home/home'
@@ -43,17 +43,6 @@ class layout extends Component{
         ).catch((error) => console.log(error))
     }
     render(){
-        // console.log(this.state);
-        Push.create("Hello world!", {
-            body: "How's it hangin'?",
-            icon: '/icon.png',
-            timeout: 4000,
-            vibrate: [400,200],
-            onClick: function () {
-                window.focus();
-                this.close();
-            }
-        });
         return(
             <div>
                 <Header />
@@ -72,7 +61,10 @@ class layout extends Component{
                         <Aboutus />
                     </Route>
                     <Route path='/vaccine-tracker/' exact>
-                        <VaccineTracker />
+                        {/* <VaccineTracker /> */}
+                        <div style={{textAlign:'center',margin:'25px',padding:'15px',boxShadow:'2px 2px 4px grey'}}>
+                            <h1>hey, On the spot vaccination is allowed now!</h1>
+                        </div>
                     </Route>
                     <Route>
                         <Alert variant='warning'>

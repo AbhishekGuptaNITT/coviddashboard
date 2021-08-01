@@ -4,15 +4,11 @@ import { Table,Button } from 'react-bootstrap';
 import Modal from './modal'
 
 const slots = (props) => {
-    console.log(props);
+    // console.log(props);
     let centers = props.centers.map((val,ind) => {
         let amt = val.sessions.map((val2,ind) => {
             
             let x = parseInt(val2.available_capacity_dose1)+parseInt(val2.available_capacity_dose2)
-            if(val2.min_age_limit==props.age)
-                return x;
-            else
-                return parseInt(0);
         })
         let p  = 0;
         for(let i=0;i<amt.length;i++)

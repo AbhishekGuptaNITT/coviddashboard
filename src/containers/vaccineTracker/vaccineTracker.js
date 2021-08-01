@@ -7,7 +7,7 @@ import Slots from '../../components/slots'
 import {Route} from 'react-router-dom'
 class VaccineTracker extends Component{
     
-   convertDate = (inputFormat) => {
+    convertDate = (inputFormat) => {
     function pad(s) { return (s < 10) ? '0' + s : s; }
     var d = new Date(inputFormat)
     return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('-')
@@ -19,10 +19,11 @@ class VaccineTracker extends Component{
         if(g.length<3)
             g = '0'+g
         id=g;
-        console.log(date);
-        let url = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id='+id+'&date='+date
+        console.log(id);
+        let url = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id="+id+"&date="+date
     
         axios.get(url).then((response) => {
+            console.log(response)
             this.setState({
                 centers:response.data.centers
             })           
@@ -35,7 +36,7 @@ class VaccineTracker extends Component{
         })
     }
     componentDidMount(){
-        console.log('mounted')
+        // console.log('mounted')
         if(!this.state.states)
             this.fetchstate();
     }
@@ -66,7 +67,7 @@ class VaccineTracker extends Component{
         for(i=0;i<this.state.districts.length;i++){
             if(x==this.state.districts[i].district_name)
             {
-                console.log(this.state.districts[i]);
+                // console.log(this.state.districts[i]);
                 district_id=this.state.districts[i].district_id;
                 break;
             }
@@ -118,7 +119,7 @@ class VaccineTracker extends Component{
                 date:this.state.date,
             }
         }).then((response) => {
-            console.log(response)
+            // console.log(response)
         }).catch((error) => console.log(error))
     }
     render(){
@@ -145,7 +146,7 @@ class VaccineTracker extends Component{
             msg="Filled! click me to search slots and look below"
             myvar="success"
         }
-        console.log(this.state);
+        // console.log(this.state);
         if(this.state.districts){
             this.districtoptions = this.state.districts.map((val,ind) => <option key={val.district_id}>{val.district_name}</option>)
         }
@@ -188,7 +189,7 @@ class VaccineTracker extends Component{
                 <Jumbotron style={{margin:'25px'}}>
                     <div className='h1' style={{textAlign:'center'}}>Vaccine Tracker <kbd>beta</kbd></div>
                     <Card>
-                    <Card.Header>Data is cached from govt servers</Card.Header>
+                    <Card.Header>Data is fetched from govt servers</Card.Header>
                     <Card.Body>
                     <Card.Title>
                         
