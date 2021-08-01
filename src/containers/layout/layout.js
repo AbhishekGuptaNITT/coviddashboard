@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Header from '../../components/header/header'
 import Home from '../../components/home/home'
 import axios from '../../components/axiosIns'
+import firebase from 'firebase'
 import Aboutus from '../aboutus'
 import VaccineTracker from '../vaccineTracker/vaccineTracker'
 class layout extends Component{
@@ -45,7 +46,7 @@ class layout extends Component{
         return(
             <div>
                 <Header />
-                {/* {console.log(this.props)} */}
+                {console.log(firebase.auth().currentUser)}
                 {this.props.status ? <h1>Logged in</h1>: null}
                 <Switch>
                     <Route path='/' exact>
