@@ -1,7 +1,10 @@
+import { Button } from 'react-bootstrap'
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/covid-19.svg'
+import firebase from 'firebase'
+import firebaseui from 'firebaseui';
 const header = (props) => {
     return(
         <Navbar bg="info" expand="lg" variant='dark'>
@@ -22,7 +25,10 @@ const header = (props) => {
                      <Nav.Link as={Link} to='/about-us'>About us</Nav.Link>
                 </Nav>
                 <Navbar.Text>
-                    <a href='https://www.linkedin.com/in/abhisheknittrichy/' target='_blank'> Site Managed by <b>Abhishek Gupta</b></a>
+                    <Button onClick={() => {
+                        firebase.auth().signOut()
+                        // window.reload()
+                    }}>Signout</Button>
                 </Navbar.Text>
             </Navbar.Collapse>
         </Navbar>

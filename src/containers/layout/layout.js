@@ -6,7 +6,6 @@ import Home from '../../components/home/home'
 import axios from '../../components/axiosIns'
 import Aboutus from '../aboutus'
 import VaccineTracker from '../vaccineTracker/vaccineTracker'
-import Push from 'push.js'
 class layout extends Component{
     state = {
         latestTotal:null,
@@ -46,6 +45,8 @@ class layout extends Component{
         return(
             <div>
                 <Header />
+                {/* {console.log(this.props)} */}
+                {this.props.status ? <h1>Logged in</h1>: null}
                 <Switch>
                     <Route path='/' exact>
                         <Home
