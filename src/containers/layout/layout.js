@@ -65,7 +65,7 @@ class layout extends Component{
                     <Route path='/vaccine-tracker/' exact>
                         {/* <VaccineTracker /> */}
                         <div style={{textAlign:'center',margin:'25px',padding:'15px',boxShadow:'2px 2px 4px grey'}}>
-                            <h1>hey, On the spot vaccination is allowed now!</h1>
+                            <h2>hey, On the spot vaccination is allowed now!</h2>
                         </div>
                     </Route>
                     <Route>
