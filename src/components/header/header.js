@@ -10,11 +10,12 @@ const header = (props) => {
         <Navbar bg="light" expand="lg" variant='light'>
             <Navbar.Brand>
             <img
-                src={logo}
+                src={firebase.auth().currentUser.photoURL}
                 width="40"
                 height="40"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
+                style={{borderRadius:'100px'}}
             />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
