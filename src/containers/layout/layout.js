@@ -7,6 +7,7 @@ import axios from '../../components/axiosIns'
 import firebase from 'firebase'
 import Aboutus from '../aboutus'
 import VaccineTracker from '../vaccineTracker/vaccineTracker'
+import NoteMaker from '../noteMaker/noteMaker'
 class layout extends Component{
     state = {
         latestTotal:null,
@@ -64,9 +65,13 @@ class layout extends Component{
                     </Route>
                     <Route path='/vaccine-tracker/' exact>
                         {/* <VaccineTracker /> */}
-                        <div style={{textAlign:'center',margin:'25px',padding:'15px',boxShadow:'2px 2px 4px grey'}}>
-                            <h2>hey, On the spot vaccination is allowed now!</h2>
+                        <div className='bg-dark text-light' style={{textAlign:'center',margin:'25px',padding:'15px',boxShadow:'2px 2px 4px grey'}}>
+                            <h2>Since, On the spot vaccination is allowed now!</h2>
+                            <h4>We have disabled vaccine tracker</h4>
                         </div>
+                    </Route>
+                    <Route path='/noteMaker' exact>
+                        <NoteMaker />
                     </Route>
                     <Route>
                         <Alert variant='warning'>

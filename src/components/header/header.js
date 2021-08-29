@@ -23,6 +23,7 @@ const header = (props) => {
                 <Nav className="mr-auto">
                      <Nav.Link as={Link} to='/'>Home</Nav.Link>
                      <Nav.Link as={Link} to='/vaccine-tracker/'><strike>Vaccine Tracker</strike></Nav.Link>
+                     <Nav.Link as={Link} to='/noteMaker/'>Note Maker</Nav.Link>
                      <Nav.Link as={Link} to='/about-us'>About us</Nav.Link>
                 </Nav>
                 <Navbar.Text>
